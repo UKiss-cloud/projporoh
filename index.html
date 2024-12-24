@@ -8,20 +8,28 @@
 
     <body>
         <header class="header">
-            <img src ="images/logoza.ru.png" alt = "Логотип" width="150" height="150">
+            <img class="header__logo" src ="images/logoza.ru.png" alt = "Логотип" width="150" height="150">
             <h1>UKiss</h1>
-            <nav>
+            <nav class="menu">
                 <ul>
-                    <li><a href="#">Каталог</a></li>
-                    <li><a href="#">Новинки</a></li>
-                    <li><a href="#">Распродажа</a></li>
-                    <li><a href="#">О нас</a></li>
+                    <li class="menu__item menu__item--active">
+                        <a class="menu__link" href="#">Главаная страница</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">Новинки</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">Распродажа</a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">О нас</a>
+                    </li>
                 </ul>
             </nav>
             <a href="login.html">Вход</a>
         </header>
         <main class="main">
-            <section> 
+            <section class="registration"> 
                 <form action="/">
                     <h2>Вход в личный кабинет</h2>
                     <input type="tel" name="phone" placeholder="Номер телефона" required>
@@ -30,79 +38,79 @@
                 </form>
 
             </section>
-            <section>
-                <h2>Главное изображение</h2>
+            <section class="start">
+                <h2>Магазин, который исполняет ваши мечты</h2>
             <ul>
                 <li> 
                     <img src="images/start.webp" alt="Старт" width="1700" height="900">
                 </li>
             </ul>
             </section>
-            <section>
-                <div>
-                    <h2>Женская одежда</h2>
+            <section class="products">
+                <div class="products__catalog">
+                    <h2>Популярные товары</h2>
                     <a href="#" target="_blank">Каталог</a>
 
                 </div>
                 <ul>
-                    <li>
+                    <li class="products1">
                         <img src="images/sharf.webp" alt="Шарф" width="250" height="250">
-                        <h3>Розовый шарф</h3>
-                        <p> Размер: Единый</p>
+                        <h3 class="products1__name">Розовый шарф</h3>
+                        <p class="products1__size"> Размер: Единый</p>
                         <a href="#">Узнать подробнее</a>
                         <span> От 999 Р</span>
                     </li>
-                    <li>
+                    <li class="products2">
                         <img src="images/kofta.webp" alt="Кофта" width="250" height="250">
-                        <h3>Синяя кофта</h3>
-                        <p> Размеры: XS, S, M, L, XL</p>
+                        <h3 class="products2__name">Синяя кофта</h3>
+                        <p class="products2__size"> Размеры: XS, S, M, L, XL</p>
                         <a href="#">Узнать подробнее</a>
                         <span> От 1299 Р</span>
                     </li>
-                    <li>
+                    <li class="products3">
                         <img src="images/coat.webp" alt="Ветровка" width="250" height="250">
-                        <h3>Бежевая ветровка</h3>
-                        <p> Размеры: XS, S, M, L, XL</p>
+                        <h3 class="products3__name">Бежевая ветровка</h3>
+                        <p class="products3__size"> Размеры: XS, S, M, L, XL</p>
                         <a href="#">Узнать подробнее</a>
                         <span> От 2999 Р</span>
                     </li>
-                    <li> 
+                    <li class="products4"> 
                         <img src="images/jacket.webp" alt="Пиджак" width="250" height="250">
-                        <h3>Серый пиджак</h3>
-                        <p> Размеры: XS, S, M, L, XL</p>
+                        <h3 class="products4__name">Серый пиджак</h3>
+                        <p class="products4__size"> Размеры: XS, S, M, L, XL</p>
                         <a href="#">Узнать подробнее</a>
                         <span> От 1999 Р</span>
                     </li>
-                    <li> 
+                    <li class="products5"> 
                         <img src="images/palto.webp" alt="Пальто" width="250" height="250">
-                        <h3>Пальто цвета camel</h3>
-                        <p> Размеры: XS, S, M, L, XL</p>
+                        <h3 class="products5__name">Пальто цвета camel</h3>
+                        <p class="products5__size"> Размеры: XS, S, M, L, XL</p>
                         <a href="#">Узнать подробнее</a>
                         <span> От 3999 Р</span>
                     </li>
                 </ul>
             </section>
-            <section>
-                <h2>Второе главное изображение</h2>
+            <section class="new">
+                <h2 class="new__start2">Новая коллекция</h2>
                 <ul>
-                    <li>
+                    <li class="new__new">
                         <img src="images/start2.webp" alt="Старт2" width="1700" height="900">
                     </li>
                 </ul>
             </section>
-            <section>
-                <h2>Условия доставки и оплаты</h2>
+            <section class="addinfo">
+                <h2 class="addinfo__name">Условия доставки и оплаты</h2>
                 <ul>
-                    <li>
+                    <li class="addinfo__delivery">
                         <img src="images/dostavka.jpg" alt="Доставка" width="450" height="450">
-                        <h3>Условия доставки</h3>
-                        <p>Доставка по всей стране. Стоимость и сроки зависят от региона и способа доставки (курьер, почта).</p>
+                        <h3 class="addinfo__name">Условия доставки</h3>
+                        <p class="addinfo__name">Доставка по всей стране. Стоимость и сроки зависят от региона и способа доставки (курьер, почта).</p>
                         <a href="#">Узнать подробнее</a>
                     </li>
-                    <li>
+                    <li class="addinfo__payment">
                         <img src="images/oplata.jpg" alt="Оплата" width="450" height="450">
-                        <h3>Способы оплаты</h3>
-                        <p>Оплата при получении (наложенный платеж) или онлайн (картой, электронными деньгами).</p>
+                        <h3 class="addinfo__name">Способы оплаты</h3>
+                        <p class="addinfo__name">Оплата при получении (наложенный платеж) или онлайн (картой, электронными деньгами).</p>
                         <a href="#">Узнать подробнее</a>
                     </li>
                 </ul>
@@ -111,12 +119,18 @@
 
 
         </main>
-        <footer>
+        <footer class="footer">
             <p>Сайт создан Пороховой Екатериной, Коротковой Юлией, Долгоруковой Алисой</p>
             <ul>
-            <li><a href="#">Правовая оговорка</a></li>
-            <li><a href="#">Пользовательское соглашение</a></li>
-            <li><a href="#">Политика  конфиденциальности</a></li>
+            <li>
+                <a href="#">Правовая оговорка</a>
+            </li>
+            <li>
+                <a href="#">Пользовательское соглашение</a>
+            </li>
+            <li>
+                <a href="#">Политика  конфиденциальности</a>
+            </li>
             </ul>
         </footer>
     </body>
