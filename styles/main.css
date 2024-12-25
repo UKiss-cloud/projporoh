@@ -2,7 +2,7 @@
     padding: 20px;
 }
 .registration {
-    background-color: #fff5f7; 
+    background-color: #fff5f7;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -26,7 +26,7 @@
 .registration button {
     width: 100%;
     padding: 10px;
-    background-color: #ee82ee;
+    background-color: #ec79ec;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -35,7 +35,7 @@
 }
 
 .registration button:hover {
-    background-color: #ff69b4; 
+    background-color: #ff69b4;
 }
 .start {
     margin-bottom: 20px;
@@ -59,7 +59,7 @@
 }
 
 .products__catalog a {
-    background-color: #ee82ee; 
+    background-color: #f1c8f1;
     color: #fff;
     padding: 10px 20px;
     border-radius: 4px;
@@ -76,6 +76,7 @@
     justify-content: space-between;
     padding: 0;
     flex-wrap: wrap;
+    gap: 20px; 
 }
 
 .products li {
@@ -83,9 +84,8 @@
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 20%;
+    width: calc(25% - 20px);
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .products img {
@@ -126,6 +126,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .addinfo {
     display: flex;
     justify-content: space-between;

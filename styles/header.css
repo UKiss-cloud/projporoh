@@ -10,12 +10,12 @@
 .header__logo {
     width: 100px;
     height: 100px;
-    font-style: ;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 96px;
+    font-style: normal;
     color: #ee82ee;
 }
 

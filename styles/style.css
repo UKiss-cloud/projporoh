@@ -8,3 +8,37 @@
 @import "footer.css";
 /* Подключение стилей относящихся к main */
 @import "main.css";
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0; 
+}
+li {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0; 
+}
+.start h2,
+.new__start2 {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem; 
+    font-weight: bold; 
+    margin: 20px 0; 
+    color: #333;
+}
+.start h2 {
+    font-size: 2.5rem; 
+    color: #000; 
+}
+
+.new__start2 {
+    font-size: 2.2rem; 
+    color: #555;
+}
+.start h2,
+.new__start2{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+    letter-spacing: 1px; 
+    line-height: 1.5;
+}
