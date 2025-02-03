@@ -116,6 +116,14 @@
     font-weight: bold;
     color: #333;
 }
+.products__card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.products__card:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 8px 16px rgba(248, 101, 170, 0.897);
+}
 .new {
     margin-bottom: 20px;
 }
@@ -164,4 +172,46 @@
     display: inline-block;
     margin-top: 10px;
     color: #ee82ee;
+}
+.addinfo__card {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0; 
+}
+
+.addinfo__delivery,
+.addinfo__payment {
+    flex: 1; 
+    margin: 0 10px;
+}
+.addinfo__delivery,
+.addinfo__payment {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.addinfo__delivery:hover,
+.addinfo__payment:hover {
+    transform: scale(1.05) translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 768px) {
+    .header__title {
+        font-size: 1.5rem;
+    }
+
+    .menu__text {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .products__clothes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .addinfo__card {
+        flex-direction: column;
+        align-items: center;
+    }
 }
