@@ -196,6 +196,11 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 @media only screen and (max-width: 768px) {
+    .container {
+        width: 100%; 
+        padding: 0 15px;
+    }
+
     .header__title {
         font-size: 1.5rem;
     }
