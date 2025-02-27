@@ -14,7 +14,7 @@
             <nav class="menu">
                 <ul class="menu__text">
                     <li class="menu__item menu__item--active">
-                        <a class="menu__link" href="#">Главаная страница</a>
+                        <a class="menu__link" href="#">Главная страница</a>
                     </li>
                     <li class="menu__item">
                         <a class="menu__link" href="#">Новинки</a>
@@ -40,11 +40,20 @@
             </section>
             <section class="start">
                 <h2>Магазин, который исполняет ваши мечты</h2>
-            <ul class="startimg">
-                <li> 
-                    <img class="start__slider" src="images/start.webp" alt="Старт" width="1700" height="900">
-                </li>
-            </ul>
+                <div class="slider-container">
+                    <ul class="startimg">
+                        <li> 
+                            <img class="slider-image active" src="images/start.webp" alt="Старт" width="1700" height="900">
+                        </li>
+                        <li>
+                            <img class="slider-image" src="images/start_sl.webp" alt="Старт" width="1700" height="900">  
+                        </li>
+                    </ul>
+                </div>
+                <div class="slider-controls">
+                    <button id="prevBtn">Назад</button>
+                    <button id="nextBtn">Вперед</button>
+                </div>
             </section>
             <section class="products">
                 <div class="products__catalog">
@@ -133,6 +142,7 @@
             </li>
             </ul>
         </footer>
+        <script src="scripts/script.js"></script>
     </body>
 </html>
     
