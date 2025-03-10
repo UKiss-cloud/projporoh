@@ -47,3 +47,26 @@ nextBtn.addEventListener('click', nextImage); // Кнопка "Вперед"
 
 // 6. Показываем первое изображение при загрузке страницы
 showImage(currentIndex);
+// 7. Автоматическое перелистывание фотографий
+let autoSlideInterval;
+
+function startAutoSlide(interval = 3000) {
+    autoSlideInterval = setInterval(nextImage, interval); // Запускаем автоматическое перелистывание
+}
+
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval); // Останавливаем автоматическое перелистывание
+}
+
+// Запускаем автоматическое перелистывание при загрузке страницы
+startAutoSlide();
+
+// Останавливаем автоматическое перелистывание при наведении на слайдер
+const sliderContainer = document.querySelector('.slider-container'); // Контейнер слайдера
+sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+
+// Возобновляем автоматическое перелистывание при уходе курсора со слайдера
+sliderContainer.addEventListener('mouseleave', () => startAutoSlide());
+
+// 6. Показываем первое изображение при загрузке страницы
+showImage(currentIndex);
