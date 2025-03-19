@@ -7,66 +7,100 @@
 // 6. Добавляем слушатели событий на кнопки "Назад" и "Вперед".
 // 7. При каждом переключении выводим текущий индекс в консоль для проверки.
 //
-// Блок-схема: https://disk.yandex.ru/d/hDGpNo7dAsepzg
+// Блок-схема: images->diagramma
 
 // 1. Инициализация элементов
 const sliderImages = document.querySelectorAll('.slider-image'); // Все изображения слайдера
 const prevBtn = document.getElementById('prevBtn'); // Кнопка "Назад"
 const nextBtn = document.getElementById('nextBtn'); // Кнопка "Вперед"
+const sliderContainer = document.querySelector('.slider-container'); // Контейнер слайдера
 let currentIndex = 0; // Текущий индекс изображения
+let autoSlideInterval; // Интервал для автоматического перелистывания
+let isAutoSlideActive = true; // Флаг для отслеживания состояния автоматического перелистывания
 
-// 2. Функция показа изображения
+// 2. Проверка наличия изображений в слайдере
+if (sliderImages.length === 0) {
+    console.error('В слайдере нет изображений!');
+} else {
+    console.log(`Найдено ${sliderImages.length} изображений.`);
+}
+
+// 3. Функция показа изображения
 function showImage(index) {
-    // Перебираем все изображения
     sliderImages.forEach((image, i) => {
-        if (i === index) {
-            image.classList.add('active'); // Показываем текущее изображение
-        } else {
-            image.classList.remove('active'); // Скрываем остальные
-        }
+        image.classList.toggle('active', i === index); // Показываем текущее изображение, скрываем остальные
     });
 }
 
-// 3. Функция перехода к следующему изображению
+// 4. Функция перехода к следующему изображению
 function nextImage() {
-    currentIndex = (currentIndex + 1) % sliderImages.length; // Увеличиваем индекс
-    showImage(currentIndex); // Показываем новое изображение
-    console.log(`Текущее изображение: ${currentIndex}`); // Выводим индекс в консоль
+    currentIndex = (currentIndex + 1) % sliderImages.length; // Увеличиваем индекс с учетом цикличности
+    updateSlider();
 }
 
-// 4. Функция перехода к предыдущему изображению
+// 5. Функция перехода к предыдущему изображению
 function prevImage() {
-    currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length; // Уменьшаем индекс
-    showImage(currentIndex); // Показываем новое изображение
+    currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length; // Уменьшаем индекс с учетом цикличности
+    updateSlider();
+}
+
+// 6. Обновление слайдера
+function updateSlider() {
+    showImage(currentIndex); // Показываем текущее изображение
     console.log(`Текущее изображение: ${currentIndex}`); // Выводим индекс в консоль
 }
 
-// 5. Добавляем слушатели событий на кнопки
-prevBtn.addEventListener('click', prevImage); // Кнопка "Назад"
-nextBtn.addEventListener('click', nextImage); // Кнопка "Вперед"
-
-// 6. Показываем первое изображение при загрузке страницы
-showImage(currentIndex);
-// 7. Автоматическое перелистывание фотографий
-let autoSlideInterval;
-
+// 7. Автоматическое перелистывание
 function startAutoSlide(interval = 3000) {
-    autoSlideInterval = setInterval(nextImage, interval); // Запускаем автоматическое перелистывание
+    if (isAutoSlideActive) {
+        autoSlideInterval = setInterval(() => {
+            nextImage(); // Переключаем на следующее изображение
+        }, interval);
+    }
 }
 
 function stopAutoSlide() {
     clearInterval(autoSlideInterval); // Останавливаем автоматическое перелистывание
 }
 
-// Запускаем автоматическое перелистывание при загрузке страницы
-startAutoSlide();
+// 8. Переключение состояния автоматического перелистывания
+function toggleAutoSlide() {
+    isAutoSlideActive = !isAutoSlideActive; // Меняем состояние флага
+    if (isAutoSlideActive) {
+        startAutoSlide(); // Возобновляем автоматическое перелистывание
+        console.log('Автоматическое перелистывание возобновлено.');
+    } else {
+        stopAutoSlide(); // Останавливаем автоматическое перелистывание
+        console.log('Автоматическое перелистывание приостановлено.');
+    }
+}
 
-// Останавливаем автоматическое перелистывание при наведении на слайдер
-const sliderContainer = document.querySelector('.slider-container'); // Контейнер слайдера
-sliderContainer.addEventListener('mouseenter', stopAutoSlide);
+// 9. Инициализация событий
+function initSlider() {
+    // Показываем первое изображение при загрузке страницы
+    showImage(currentIndex);
 
-// Возобновляем автоматическое перелистывание при уходе курсора со слайдера
-sliderContainer.addEventListener('mouseleave', () => startAutoSlide());
+    // Добавляем слушатели событий на кнопки
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
 
-// 6. Показываем первое изображение при загрузке страницы
-showImage(currentIndex);
+    // Автоматическое перелистывание
+    startAutoSlide();
+
+    // Останавливаем автоматическое перелистывание при наведении на слайдер
+    sliderContainer.addEventListener('mouseenter', () => {
+        stopAutoSlide();
+        console.log('Автоматическое перелистывание приостановлено (наведение).');
+    });
+
+    // Возобновляем автоматическое перелистывание при уходе курсора со слайдера
+    sliderContainer.addEventListener('mouseleave', () => {
+        if (isAutoSlideActive) {
+            startAutoSlide();
+            console.log('Автоматическое перелистывание возобновлено (уход курсора).');
+        }
+    });
+}
+
+// 10. Запуск инициализации слайдера
+initSlider();
