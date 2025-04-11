@@ -104,3 +104,106 @@ function initSlider() {
 
 // 10. Запуск инициализации слайдера
 initSlider();
+
+
+
+
+
+'use strict';
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Фиксированный хедер
+    const initFixedHeader = () => {
+        const header = document.querySelector('.header');
+        const container = document.querySelector('.header .container');
+        
+        if (!header || !container) return;
+
+        const headerHeight = header.offsetHeight;
+        const containerWidth = container.offsetWidth;
+
+        const placeholder = document.createElement('div');
+        placeholder.style.cssText = `
+            height: ${headerHeight}px;
+            display: none;
+        `;
+        header.parentNode.insertBefore(placeholder, header);
+
+        const toggleFixedHeader = () => {
+            const shouldFix = window.scrollY > headerHeight;
+            
+            header.classList.toggle('header--fixed', shouldFix);
+            placeholder.style.display = shouldFix ? 'block' : 'none';
+            
+            if (shouldFix) {
+                header.style.width = `${containerWidth}px`;
+            } else {
+                header.style.width = '';
+            }
+        };
+
+        window.addEventListener('scroll', toggleFixedHeader);
+    };
+
+    // 2. Навигация по странице
+    const initNavigation = () => {
+        const menuLinks = document.querySelectorAll('.menu__link');
+        
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const linkText = link.textContent.trim().toLowerCase();
+                let targetElement;
+
+                switch(linkText) {
+                    case 'главная страница':
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return;
+                    case 'новинки':
+                        targetElement = document.querySelector('.products__catalog');
+                        break;
+                    case 'распродажа':
+                        targetElement = document.querySelector('.slider-container');
+                        break;
+                    case 'о нас':
+                        targetElement = document.querySelector('footer');
+                        break;
+                    default:
+                        return;
+                }
+
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    };
+
+    // 3. Кнопка "Наверх"
+    const initScrollButton = () => {
+        const button = document.createElement('button');
+        button.className = 'scroll-up';
+        button.textContent = '↑';
+        document.body.appendChild(button);
+
+        const toggleButton = () => {
+            button.classList.toggle('scroll-up--show', 
+                window.scrollY > document.documentElement.clientHeight
+            );
+        };
+
+        button.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        window.addEventListener('scroll', toggleButton);
+    };
+
+    // Инициализация всех функций
+    initFixedHeader();
+    initNavigation();
+    initScrollButton();
+});
