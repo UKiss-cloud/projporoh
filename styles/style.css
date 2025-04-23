@@ -8,6 +8,8 @@
 @import "footer.css";
 /* Подключение стилей относящихся к main */
 @import "main.css";
+@import "modal.css";
+@import "novigation.css";
 ul {
     list-style-type: none;
     padding-left: 0;

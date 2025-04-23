@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
+    <header class="header container">
             <img class="header__logo" src="images/logoza.ru.png" alt="Логотип" width="150" height="150">
             <h1 class="header__title">UKiss</h1>
             <nav class="menu">
@@ -28,7 +27,6 @@
                     </li>
                 </ul>
             </nav>
-        </div>
     </header>
         <main class="main container">
             <section class="registration"> 
@@ -64,35 +62,55 @@
 
                 </div>
                 <ul class="products__clothes">
-                    <li class="products__card">
+                    <li class="products__card" 
+                    data-product="sharf" 
+                    data-description="Мягкий и теплый розовый шарф из высококачественного акрила. Длина: 180 см, ширина: 30 см." 
+                    data-materials="Состав: 100% акрил"
+                    data-care="Уход: ручная стирка при 30°C">
                         <img class="products_img" src="images/sharf.webp" alt="Шарф" width="250" height="250">
                         <h3 class="products__name">Розовый шарф</h3>
                         <p class="products__size"> Размер: Единый</p>
                         <a class="products__link" href="#">Узнать подробнее</a>
                         <span class="products__price"> От 999 Р</span>
                     </li>
-                    <li class="products__card">
+                    <li class="products__card" 
+                    data-product="kofta" 
+                    data-description="Стильная синяя кофта из мягкого хлопка с добавлением шерсти."
+                    data-materials="Состав: 70% хлопок, 30% шерсть"
+                    data-care="Уход: машинная стирка при 30°C">
                         <img class="products_img" src="images/kofta.webp" alt="Кофта" width="250" height="250">
                         <h3 class="products__name">Синяя кофта</h3>
                         <p class="products__size"> Размеры: XS, S, M, L, XL</p>
                         <a class="products__link" href="#">Узнать подробнее</a>
                         <span class="products__price"> От 1299 Р</span>
                     </li>
-                    <li class="products__card">
+                    <li class="products__card" 
+                    data-product="coat"
+                    data-description="Модная ветровка демисезон с качественной фурнитурой"
+                    data-materials="Состав: 100% полиэстер"
+                    data-care="Уход: машинная стирка при 40°C">
                         <img class="products_img" src="images/coat.webp" alt="Ветровка" width="250" height="250">
                         <h3 class="products__name">Бежевая ветровка</h3>
                         <p class="products__size"> Размеры: XS, S, M, L, XL</p>
                         <a class="products__link" href="#">Узнать подробнее</a>
                         <span class="products__price"> От 2999 Р</span>
                     </li>
-                    <li class="products__card"> 
+                    <li class="products__card" 
+                    data-product="jacket"
+                    data-description="Модный приталенный пиджак с дополнительной подкладкой"
+                    data-materials="Состав: 60% кашемир, 40% шерсть"
+                    data-care="Уход: ручная стирка при 30°C">
                         <img class="products_img" src="images/jacket.webp" alt="Пиджак" width="250" height="250">
                         <h3 class="products__name">Серый пиджак</h3>
                         <p class="products__size"> Размеры: XS, S, M, L, XL</p>
                         <a class="products__link" href="#">Узнать подробнее</a>
                         <span class="products__price"> От 1999 Р</span>
                     </li>
-                    <li class="products__card"> 
+                    <li class="products__card" 
+                    data-product="palto"
+                    data-description="Длинное пальто с внутренними карманами"
+                    data-materials="Состав: 100% шерсть"
+                    data-care="Уход: ручная стирка при 40°C">
                         <img class="products_img" src="images/palto.webp" alt="Пальто" width="250" height="250">
                         <h3 class="products__name">Пальто цвета Camel</h3>
                         <p class="products__size"> Размеры: XS, S, M, L, XL</p>
@@ -145,6 +163,22 @@
             </ul>
         </footer>
         <script src="scripts/script.js"></script>
+        <div class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <div class="modal-body">
+                <img src="" alt="" class="modal-image">
+                <div class="modal-info">
+                  <h2 class="modal-title"></h2>
+                  <p class="modal-price"></p>
+                  <p class="modal-description"></p>
+                  <p class="modal-materials"></p>
+                  <p class="modal-care"></p>
+                  <button class="modal-buy">Добавить в корзину</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </body>
 </html>
     

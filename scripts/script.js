@@ -107,103 +107,143 @@ initSlider();
 
 
 
+    //Массив
+// Объявляем переменную productsContainer и сохраняем в нее элементы products
+const productsContainer = document.querySelector(".products");
 
+// Проверяем существует ли элемент productsContainer
+if (productsContainer) {
+    // Создаем массив объектов с данными о продуктах
+    const productsData = [
+        {
+            name: "Розовый шарф",
+            size: "Размер: Единый",
+            price: "От 999 Р",
+            description: "Мягкий и теплый розовый шарф из высококачественного акрила",
+            materials: "Состав: 100% акрил",
+            care: "Уход: ручная стирка при 30°C",
+            image: "images/sharf.webp"
+        },
+        {
+            name: "Синяя кофта",
+            size: "Размеры: XS, S, M, L, XL",
+            price: "От 1299 Р",
+            description: "Стильная синяя кофта из мягкого хлопка с добавлением шерсти",
+            materials: "Состав: 70% хлопок, 30% шерсть",
+            care: "Уход: машинная стирка при 30°C",
+            image: "images/kofta.webp"
+        },
+        {
+            name: "Бежевая ветровка",
+            size: "Размеры: XS, S, M, L, XL",
+            price: "От 2999 Р",
+            description: "Модная ветровка демисезон с качественной фурнитурой",
+            materials: "Состав: 100% полиэстер",
+            care: "Уход: машинная стирка при 40°C",
+            image: "images/coat.webp"
+        },
+        {
+            name: "Серый пиджак",
+            size: "Размеры: XS, S, M, L, XL",
+            price: "От 1999 Р",
+            description: "Модный приталенный пиджак с дополнительной подкладкой",
+            materials: "Состав: 60% кашемир, 40% шерсть",
+            care: "Уход: ручная стирка при 30°C",
+            image: "images/jacket.webp"
+        },
+        {
+            name: "Пальто цвета Camel",
+            size: "Размеры: XS, S, M, L, XL",
+            price: "От 3999 Р",
+            description: "Длинное пальто с внутренними карманами",
+            materials: "Состав: 100% шерсть",
+            care: "Уход: ручная стирка при 40°C",
+            image: "images/palto.webp"
+        }
+    ];
 
-'use strict';
+    // Получаем все карточки продуктов
+    const productCards = productsContainer.querySelectorAll(".products__card");
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Фиксированный хедер
-    const initFixedHeader = () => {
-        const header = document.querySelector('.header');
-        const container = document.querySelector('.header .container');
-        
-        if (!header || !container) return;
-
-        const headerHeight = header.offsetHeight;
-        const containerWidth = container.offsetWidth;
-
-        const placeholder = document.createElement('div');
-        placeholder.style.cssText = `
-            height: ${headerHeight}px;
-            display: none;
-        `;
-        header.parentNode.insertBefore(placeholder, header);
-
-        const toggleFixedHeader = () => {
-            const shouldFix = window.scrollY > headerHeight;
+    // Обновляем данные для каждого продукта
+    productCards.forEach((card, index) => {
+        if (productsData[index]) {
+            const product = productsData[index];
             
-            header.classList.toggle('header--fixed', shouldFix);
-            placeholder.style.display = shouldFix ? 'block' : 'none';
+            // Устанавливаем основные данные
+            card.querySelector(".products__name").textContent = product.name;
+            card.querySelector(".products__size").textContent = product.size;
+            card.querySelector(".products__price").textContent = product.price;
             
-            if (shouldFix) {
-                header.style.width = `${containerWidth}px`;
-            } else {
-                header.style.width = '';
+            // Устанавливаем изображение
+            const imgElement = card.querySelector(".products_img");
+            if (imgElement) {
+                imgElement.src = product.image;
+                imgElement.alt = product.name;
             }
-        };
-
-        window.addEventListener('scroll', toggleFixedHeader);
-    };
-
-    // 2. Навигация по странице
-    const initNavigation = () => {
-        const menuLinks = document.querySelectorAll('.menu__link');
-        
-        menuLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const linkText = link.textContent.trim().toLowerCase();
-                let targetElement;
-
-                switch(linkText) {
-                    case 'главная страница':
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return;
-                    case 'новинки':
-                        targetElement = document.querySelector('.products__catalog');
-                        break;
-                    case 'распродажа':
-                        targetElement = document.querySelector('.slider-container');
-                        break;
-                    case 'о нас':
-                        targetElement = document.querySelector('footer');
-                        break;
-                    default:
-                        return;
-                }
-
-                if (targetElement) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
+            
+            // Добавляем data-атрибуты для модального окна
+            card.dataset.description = product.description;
+            card.dataset.materials = product.materials;
+            card.dataset.care = product.care;
+            card.dataset.image = product.image;
+        }
+    });
+}
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Получаем все кнопки "Узнать подробнее"
+    const detailButtons = document.querySelectorAll('.products__link');
+    const modal = document.querySelector('.modal');
+    
+    // Если элементы существуют
+    if (detailButtons.length && modal) {
+        // Получаем элементы модального окна
+        const modalImage = modal.querySelector('.modal-image');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalPrice = modal.querySelector('.modal-price');
+        const modalDescription = modal.querySelector('.modal-description');
+        const modalMaterials = modal.querySelector('.modal-materials');
+        const modalCare = modal.querySelector('.modal-care');
+        const closeButton = modal.querySelector('.close');
+        console.log("кнопка и окно получены")
+        // Обработчик для каждой кнопки
+        detailButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log("нажали на кнопку")
+                // Получаем родительскую карточку товара
+                const productCard = this.closest('.products__card');
+                
+                // Заполняем модальное окно данными из атрибутов
+                modalImage.src = productCard.querySelector('.products_img').src;
+                modalImage.alt = productCard.querySelector('.products__name').textContent;
+                modalTitle.textContent = productCard.querySelector('.products__name').textContent;
+                modalPrice.textContent = productCard.querySelector('.products__price').textContent;
+                
+                // Используем данные из data-атрибутов
+                modalDescription.textContent = productCard.dataset.description;
+                modalMaterials.textContent = productCard.dataset.materials;
+                modalCare.textContent = productCard.dataset.care;
+                
+                // Показываем модальное окно
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             });
         });
-    };
-
-    // 3. Кнопка "Наверх"
-    const initScrollButton = () => {
-        const button = document.createElement('button');
-        button.className = 'scroll-up';
-        button.textContent = '↑';
-        document.body.appendChild(button);
-
-        const toggleButton = () => {
-            button.classList.toggle('scroll-up--show', 
-                window.scrollY > document.documentElement.clientHeight
-            );
-        };
-
-        button.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Закрытие модального окна
+        closeButton.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
-        window.addEventListener('scroll', toggleButton);
-    };
-
-    // Инициализация всех функций
-    initFixedHeader();
-    initNavigation();
-    initScrollButton();
+        // Закрытие при клике вне окна
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
 });
