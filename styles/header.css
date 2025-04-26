@@ -44,3 +44,19 @@
 .menu__link:hover {
     color: #ee82ee;
 }
+
+/*фиксирование шапки*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+/* Добавить отступ для основного содержимого, чтобы оно не скрывалось под шапкой */
+.main {
+    margin-top: 150px; 
+}
