@@ -247,3 +247,107 @@ if (productsContainer) {
         });
     }
 });
+
+
+// Получаем элемент меню
+const menu = document.querySelector('.menu');
+const menuText = document.querySelector('.menu__text');
+
+// Если меню существует
+if (menu && menuText) {
+    // Создаем объект с данными для меню
+    const menuData = {
+        home: {
+            link: '#',
+            title: 'Главная страница',
+            section: 'home'
+        },
+        new: {
+            link: '#new',
+            title: 'Новинки',
+            section: 'new'
+        },
+        sale: {
+            link: '#sale',
+            title: 'Распродажа',
+            section: 'sale'
+        },
+        about: {
+            link: '#about',
+            title: 'О нас',
+            section: 'about'
+        }
+    };
+
+    // Функция для создания пункта меню
+    const createMenuItem = (link, title, section) => {
+        const menuItem = `
+            <li class="menu__item">
+                <a class="menu__link" href="${link}" data-section="${section}">${title}</a>
+            </li>
+        `;
+        return menuItem;
+    };
+
+    // Добавляем пункты меню
+    for (const item in menuData) {
+        const menuItem = menuData[item];
+        const menuItemHTML = createMenuItem(menuItem.link, menuItem.title, menuItem.section);
+        menuText.insertAdjacentHTML('beforeend', menuItemHTML);
+    }
+
+    // Получаем все ссылки меню после их создания
+    const menuLinks = document.querySelectorAll('.menu__link');
+
+    // Обработчик кликов по меню
+    menuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Удаляем класс active у всех пунктов
+            menuLinks.forEach(item => {
+                item.parentElement.classList.remove('menu__item--active');
+            });
+            
+            // Добавляем класс active текущему пункту
+            e.target.parentElement.classList.add('menu__item--active');
+            
+            // Прокрутка к соответствующему разделу
+            const section = e.target.dataset.section;
+            scrollToSection(section);
+        });
+    });
+
+    // Функция для прокрутки к разделу
+    function scrollToSection(section) {
+        switch(section) {
+            case 'home':
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                break;
+            case 'new':
+                document.querySelector('.new').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                break;
+            case 'sale':
+                document.querySelector('.products').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                break;
+            case 'about':
+                document.querySelector('.footer').scrollIntoView({
+                    behavior: 'smooth'
+                });
+                break;
+        }
+    }
+
+    // Делаем первый пункт меню активным по умолчанию
+    const firstMenuItem = document.querySelector('.menu__item:first-child');
+    if (firstMenuItem) {
+        firstMenuItem.classList.add('menu__item--active');
+    }
+}

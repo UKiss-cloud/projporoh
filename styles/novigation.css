@@ -1,0 +1,105 @@
+/* Стили для навигационного меню */
+.menu {
+    margin-left: auto;
+    position: relative;
+    z-index: 100;
+}
+
+.menu__text {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.menu__item {
+    position: relative;
+    padding: 10px 0;
+}
+
+.menu__link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Эффекты при наведении */
+.menu__link:hover {
+    color: #e91e63;
+}
+
+.menu__link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #e91e63;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.menu__link:hover::after {
+    width: calc(100% - 24px);
+}
+
+/* Активный пункт меню */
+.menu__item--active .menu__link {
+    color: #e91e63;
+    font-weight: 600;
+}
+
+.menu__item--active .menu__link::after {
+    width: calc(100% - 24px);
+}
+
+/* Анимация для плавного появления подчеркивания */
+@keyframes underline {
+    from { width: 0; }
+    to { width: calc(100% - 24px); }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .menu {
+        width: 100%;
+        margin: 20px 0 0;
+    }
+    
+    .menu__text {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .menu__item {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .menu__link {
+        display: block;
+        padding: 12px;
+    }
+    
+    .menu__link::after,
+    .menu__link:hover::after,
+    .menu__item--active .menu__link::after {
+        width: 40%;
+        left: 30%;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .menu__link {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+}
