@@ -10,100 +10,100 @@
 // Блок-схема: images->diagramma
 
 // 1. Инициализация элементов
-const sliderImages = document.querySelectorAll('.slider-image'); // Все изображения слайдера
-const prevBtn = document.getElementById('prevBtn'); // Кнопка "Назад"
-const nextBtn = document.getElementById('nextBtn'); // Кнопка "Вперед"
-const sliderContainer = document.querySelector('.slider-container'); // Контейнер слайдера
-let currentIndex = 0; // Текущий индекс изображения
-let autoSlideInterval; // Интервал для автоматического перелистывания
-let isAutoSlideActive = true; // Флаг для отслеживания состояния автоматического перелистывания
+// const sliderImages = document.querySelectorAll('.slider-image'); // Все изображения слайдера
+// const prevBtn = document.getElementById('prevBtn'); // Кнопка "Назад"
+// const nextBtn = document.getElementById('nextBtn'); // Кнопка "Вперед"
+// const sliderContainer = document.querySelector('.slider-container'); // Контейнер слайдера
+// let currentIndex = 0; // Текущий индекс изображения
+// let autoSlideInterval; // Интервал для автоматического перелистывания
+// let isAutoSlideActive = true; // Флаг для отслеживания состояния автоматического перелистывания
 
 // 2. Проверка наличия изображений в слайдере
-if (sliderImages.length === 0) {
-    console.error('В слайдере нет изображений!');
-} else {
-    console.log(`Найдено ${sliderImages.length} изображений.`);
-}
+// if (sliderImages.length === 0) {
+    // console.error('В слайдере нет изображений!');
+// } else {
+    // console.log(`Найдено ${sliderImages.length} изображений.`);
+// }
 
 // 3. Функция показа изображения
-function showImage(index) {
-    sliderImages.forEach((image, i) => {
-        image.classList.toggle('active', i === index); // Показываем текущее изображение, скрываем остальные
-    });
-}
+// function showImage(index) {
+    // sliderImages.forEach((image, i) => {
+       //  image.classList.toggle('active', i === index); // Показываем текущее изображение, скрываем остальные
+    // });
+// }
 
 // 4. Функция перехода к следующему изображению
-function nextImage() {
-    currentIndex = (currentIndex + 1) % sliderImages.length; // Увеличиваем индекс с учетом цикличности
-    updateSlider();
-}
+// function nextImage() {
+    // currentIndex = (currentIndex + 1) % sliderImages.length; // Увеличиваем индекс с учетом цикличности
+    // updateSlider();
+// }
 
 // 5. Функция перехода к предыдущему изображению
-function prevImage() {
-    currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length; // Уменьшаем индекс с учетом цикличности
-    updateSlider();
-}
+// function prevImage() {
+    // currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length; // Уменьшаем индекс с учетом цикличности
+    // updateSlider();
+// }
 
 // 6. Обновление слайдера
-function updateSlider() {
-    showImage(currentIndex); // Показываем текущее изображение
-    console.log(`Текущее изображение: ${currentIndex}`); // Выводим индекс в консоль
-}
+// function updateSlider() {
+    // showImage(currentIndex); // Показываем текущее изображение
+   // console.log(`Текущее изображение: ${currentIndex}`); // Выводим индекс в консоль
+// }
 
 // 7. Автоматическое перелистывание
-function startAutoSlide(interval = 3000) {
-    if (isAutoSlideActive) {
-        autoSlideInterval = setInterval(() => {
-            nextImage(); // Переключаем на следующее изображение
-        }, interval);
-    }
-}
+// function startAutoSlide(interval = 3000) {
+   // if (isAutoSlideActive) {
+       // autoSlideInterval = setInterval(() => {
+           // nextImage(); // Переключаем на следующее изображение
+        // }, interval);
+    // }
+// }
 
-function stopAutoSlide() {
-    clearInterval(autoSlideInterval); // Останавливаем автоматическое перелистывание
-}
+// function stopAutoSlide() {
+   // clearInterval(autoSlideInterval); // Останавливаем автоматическое перелистывание
+// }
 
 // 8. Переключение состояния автоматического перелистывания
-function toggleAutoSlide() {
-    isAutoSlideActive = !isAutoSlideActive; // Меняем состояние флага
-    if (isAutoSlideActive) {
-        startAutoSlide(); // Возобновляем автоматическое перелистывание
-        console.log('Автоматическое перелистывание возобновлено.');
-    } else {
-        stopAutoSlide(); // Останавливаем автоматическое перелистывание
-        console.log('Автоматическое перелистывание приостановлено.');
-    }
-}
+// function toggleAutoSlide() {
+    // isAutoSlideActive = !isAutoSlideActive; // Меняем состояние флага
+    // if (isAutoSlideActive) {
+        // startAutoSlide(); // Возобновляем автоматическое перелистывание
+        // console.log('Автоматическое перелистывание возобновлено.');
+    // } else {
+       // stopAutoSlide(); // Останавливаем автоматическое перелистывание
+       // console.log('Автоматическое перелистывание приостановлено.');
+    // }
+// }
 
 // 9. Инициализация событий
-function initSlider() {
+// function initSlider() {
     // Показываем первое изображение при загрузке страницы
-    showImage(currentIndex);
+    // showImage(currentIndex);
 
     // Добавляем слушатели событий на кнопки
-    prevBtn.addEventListener('click', prevImage);
-    nextBtn.addEventListener('click', nextImage);
+    // prevBtn.addEventListener('click', prevImage);
+    // nextBtn.addEventListener('click', nextImage);
 
     // Автоматическое перелистывание
-    startAutoSlide();
+   // startAutoSlide();
 
     // Останавливаем автоматическое перелистывание при наведении на слайдер
-    sliderContainer.addEventListener('mouseenter', () => {
-        stopAutoSlide();
-        console.log('Автоматическое перелистывание приостановлено (наведение).');
-    });
+   // sliderContainer.addEventListener('mouseenter', () => {
+      //  stopAutoSlide();
+       // console.log('Автоматическое перелистывание приостановлено (наведение).');
+   // });
 
     // Возобновляем автоматическое перелистывание при уходе курсора со слайдера
-    sliderContainer.addEventListener('mouseleave', () => {
-        if (isAutoSlideActive) {
-            startAutoSlide();
-            console.log('Автоматическое перелистывание возобновлено (уход курсора).');
-        }
-    });
-}
+    // sliderContainer.addEventListener('mouseleave', () => {
+        // if (isAutoSlideActive) {
+          //  startAutoSlide();
+           // console.log('Автоматическое перелистывание возобновлено (уход курсора).');
+       // }
+    // });
+// }
 
 // 10. Запуск инициализации слайдера
-initSlider();
+// initSlider();
 
 
 
@@ -408,17 +408,205 @@ fetch(apiUrl)
     });
 }
 
+// Прелоадер и инициализация Swiper
+document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.querySelector(".preloader");
+    const content = document.querySelector(".content");
+    
+    if (preloader && content) {
+        // Показываем контент (но прозрачный)
+        content.style.opacity = '0';
+        content.style.display = 'block';
+        
+        setTimeout(() => {
+            // Скрываем прелоадер
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            
+            // Показываем контент
+            content.style.opacity = '1';
+            
+            // Инициализируем Swiper
+            initSwiper();
+            
+            // Удаляем прелоадер после анимации
+            setTimeout(() => {
+                preloader.remove();
+            }, 500);
+        }, 3000);
+    }
 
-const preloader = document.querySelector(".preloader");
-const content = document.querySelector(".content");
-if (preloader && content) {
-setTimeout(() => {
-// Скрываем прелоадер
-preloader.style.opacity = "0";
-preloader.style.visibility = "hidden";
-// Показываем контент
-content.style.display = "block";
-// Удаляем элемент из DOM
-preloader.remove();
-}, 3000); // Задержка 3 секунды
-}
+    function initSwiper() {
+        const slider = document.querySelector('.start.swiper');
+        if (slider) {
+            new Swiper(slider, {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                on: {
+                    init: function() {
+                        console.log('Swiper initialized');
+                    }
+                }
+            });
+        }
+    }
+});
+
+// Система авторизации
+document.addEventListener('DOMContentLoaded', function() {
+    // Элементы интерфейса
+    const loginBtn = document.querySelector('.login-btn');
+    const authModal = document.querySelector('.auth-modal');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    
+    // Показ/скрытие модального окна
+    if (loginBtn && authModal) {
+        loginBtn.addEventListener('click', function() {
+            authModal.style.display = 'flex';
+            loginForm.hidden = false;
+            registerForm.hidden = true;
+            
+            // Автозаполнение номера, если есть в памяти
+            const rememberedPhone = localStorage.getItem('rememberedPhone');
+            if (rememberedPhone) {
+                loginForm.querySelector('input[type="tel"]').value = rememberedPhone;
+                loginForm.querySelector('input[type="password"]').focus();
+            }
+        });
+        
+        document.querySelector('.auth-close').addEventListener('click', function() {
+            authModal.style.display = 'none';
+        });
+        
+        authModal.addEventListener('click', function(e) {
+            if (e.target === authModal) {
+                authModal.style.display = 'none';
+            }
+        });
+    }
+    
+    // Переключение между формами
+    document.querySelectorAll('.switch-form').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.hidden = !loginForm.hidden;
+            registerForm.hidden = !registerForm.hidden;
+        });
+    });
+    
+    // Обработка входа
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const phone = this.querySelector('input[type="tel"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            const rememberMe = this.querySelector('#remember-me').checked;
+            
+            // Проверка пользователей (в реальном проекте - запрос к серверу)
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.phone === phone && u.password === password);
+            
+            if (user) {
+                // Успешный вход
+                if (rememberMe) {
+                    localStorage.setItem('rememberedPhone', phone);
+                }
+                
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showMessage('Вход выполнен успешно!', 'success');
+                authModal.style.display = 'none';
+                
+                // Обновляем кнопку входа
+                if (loginBtn) {
+                    loginBtn.textContent = user.name || phone;
+                    loginBtn.classList.add('logged-in');
+                }
+            } else {
+                showMessage('Неверный номер или пароль', 'error');
+            }
+        });
+    }
+    
+    // Обработка регистрации
+    if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const password = this.querySelectorAll('input[type="password"]')[0].value;
+            const confirmPassword = this.querySelectorAll('input[type="password"]')[1].value;
+            
+            // Валидация
+            if (password !== confirmPassword) {
+                showMessage('Пароли не совпадают', 'error');
+                return;
+            }
+            
+            if (password.length < 8) {
+                showMessage('Пароль должен быть не менее 8 символов', 'error');
+                return;
+            }
+            
+            // Сохраняем нового пользователя
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Проверка на существующий аккаунт
+            if (users.some(u => u.phone === phone)) {
+                showMessage('Этот номер уже зарегистрирован', 'error');
+                return;
+            }
+            
+            const newUser = { name, phone, password };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            
+            showMessage(`Добро пожаловать, ${name}!`, 'success');
+            authModal.style.display = 'none';
+            
+            // Обновляем кнопку входа
+            if (loginBtn) {
+                loginBtn.textContent = name;
+                loginBtn.classList.add('logged-in');
+            }
+        });
+    }
+    
+    // Функция показа сообщений
+    function showMessage(text, type) {
+        const messageEl = document.createElement('div');
+        messageEl.className = `auth-message auth-message--${type}`;
+        messageEl.textContent = text;
+        
+        document.body.appendChild(messageEl);
+        
+        setTimeout(() => {
+            messageEl.remove();
+        }, 3000);
+    }
+    
+    // Проверяем авторизацию при загрузке
+    if (localStorage.getItem('currentUser') && loginBtn) {
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        loginBtn.textContent = user.name || user.phone;
+        loginBtn.classList.add('logged-in');
+    }
+});

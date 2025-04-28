@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
     <div class="preloader">
@@ -38,31 +40,22 @@
             </nav>
     </header>
         <main class="main container">
-            <section class="registration"> 
-                <form action="/">
-                    <h2>Вход в личный кабинет</h2>
-                    <input class="registration__number" type="tel" name="phone" placeholder="Номер телефона" required>
-                    <input class="registration__pass" type="password" name="password" placeholder="Пароль" required>
-                    <button class="registration__exit">Войти</button>
-                </form>
-
+            <section class="registration">
+                <button class="login-btn registration__exit">Войти в личный кабинет</button>
             </section>
-            <section class="start">
+            <section class="start swiper">
                 <h2>Магазин, который исполняет ваши мечты</h2>
-                <div class="slider-container">
-                    <ul class="startimg">
-                        <li> 
-                            <img class="slider-image active" src="images/start.webp" alt="Старт" width="1700" height="900">
-                        </li>
-                        <li>
-                            <img class="slider-image" src="images/start_sl.webp" alt="Старт" width="1700" height="900">  
-                        </li>
-                    </ul>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/start.webp" alt="Старт" width="1700" height="900">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/start_sl.webp" alt="Старт" width="1700" height="900">  
+                    </div>
                 </div>
-                <div class="slider-controls">
-                    <button id="prevBtn">Назад</button>
-                    <button id="nextBtn">Вперед</button>
-                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </section>
             <section class="products">
                 <div class="products__catalog">
@@ -188,6 +181,38 @@
               </div>
             </div>
           </div>
+<!-- Модальное окно авторизации -->
+<div class="auth-modal" hidden>
+    <div class="auth-content">
+      <button class="auth-close">×</button>
+      
+      <!-- Форма входа -->
+      <form class="auth-form" id="login-form">
+        <h3>Вход в личный кабинет</h3>
+        <input type="tel" class="registration__number" placeholder="Номер телефона" required>
+        <input type="password" class="registration__pass" placeholder="Пароль" required>
+        <label class="remember-me">
+          <input type="checkbox" id="remember-me"> Запомнить меня
+        </label>
+        <button type="submit" class="registration__exit">Войти</button>
+        <a href="#" class="switch-form">Нет аккаунта? Зарегистрироваться</a>
+      </form>
+      
+      <!-- Форма регистрации -->
+      <form class="auth-form" id="register-form" hidden>
+        <h3>Регистрация</h3>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" class="registration__number" placeholder="Номер телефона" required>
+        <input type="password" class="registration__pass" placeholder="Пароль" required>
+        <input type="password" placeholder="Повторите пароль" required>
+        <button type="submit" class="registration__exit">Зарегистрироваться</button>
+        <a href="#" class="switch-form">Уже есть аккаунт? Войти</a>
+      </form>
+    </div>
+  </div>
+  </div>
+          </div>
+          
     </body>
 </html>
     

@@ -11,6 +11,7 @@
 @import "modal.css";
 @import "novigation.css";
 @import "preloader.css";
+@import "authmodal.css";
 ul {
     list-style-type: none;
     padding-left: 0;

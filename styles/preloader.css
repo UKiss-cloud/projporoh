@@ -1,39 +1,141 @@
 /* Скрываем контент до загрузки */
 .content {
     display: none;
-    }
-    .preloader {
-    padding-top: 25%; /* Отступ сверху */
-    background: #fefefb; /* задаем фон при загрузке */
-    transition: opacity 0.5s ease; /* Плавный переход для изменения прозрачности */
-    text-align: center;/* центрируем текст */
-    }
-    .loader span {
-    display: inline-block;/* располагаем элементы в строку */
-    width: 20px;/* Ширина кругов */
-    height: 20px;/* Высота кругов */
-    border-radius: 100%;/* задаем круг */
-    background-color: #141414;/* Цвет кругов */
-    margin: 35px5px;/* Отступы вокруг кругов */
-    }
-    .dot1 {
-    animation: bounce 1s ease-in-out infinite;/* анимация для первой точки
-    */
-    }
-    .dot2{
-    animation: bounce 1s ease-in-out 0.33s infinite;/*анимация для второй точки с задержкой*/
-    }
-    .dot3 {
-    animation: bounce 1s ease-in-out 0.66s infinite;/* анимация для третьей точки с задержкой */
-    }
-    /* Анимация bounce: */
-    @keyframes bounce {
-    0%,
-    75%,
-    100% {
-    transform: translateY(0);/* круги на месте */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Стили для прелоадера */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 25%;
+    background: #fefefb;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    text-align: center;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Анимационные точки */
+.loader {
+    display: inline-block;
+}
+
+.loader span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: #141414;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+.dot1 {
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.dot2 {
+    animation: bounce 1s ease-in-out 0.33s infinite;
+}
+
+.dot3 {
+    animation: bounce 1s ease-in-out 0.66s infinite;
+}
+
+@keyframes bounce {
+    0%, 75%, 100% {
+        transform: translateY(0);
     }
     25% {
-        transform: translateY(-30px);/* круги поднимаются */
-        }
-        }
+        transform: translateY(-30px);
+    }
+}
+
+/* Стили для Swiper */
+.start .swiper {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.start .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start .swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.start .swiper-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.start .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: #ccc;
+    opacity: 1;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.start .swiper-pagination-bullet-active {
+    background: #ff69b4;
+}
+
+.start .swiper-button-prev,
+.start .swiper-button-next {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    color: #ff69b4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.start .swiper-button-prev:hover,
+.start .swiper-button-next:hover {
+    background: rgba(255, 105, 180, 0.8);
+    color: white;
+}
+
+.start .swiper-button-prev::after,
+.start .swiper-button-next::after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Состояния после загрузки */
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.content.visible {
+    display: block;
+    opacity: 1;
+}
+
+.start .swiper.initialized {
+    opacity: 1;
+}
