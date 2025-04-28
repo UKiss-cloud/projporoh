@@ -124,16 +124,7 @@
     transform: scale(1.05) translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.74);
 }
-.new {
-    margin-bottom: 20px;
-}
 
-.new img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 
 .addinfo {
     display: flex;
@@ -259,4 +250,25 @@
 .slider-controls button:focus {
     outline: none; 
     box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.5); 
+}
+
+
+
+
+
+.images__list {
+    display: flex; /* Используем flexbox для выравнивания карточек в строку*/
+    flex-wrap: wrap; /*Если карточки не влезут в строку, то перенос на
+новую*/
+gap: 50px; /* промежуток между карточками */
+justify-content: center; /* распределяем элементы по центру*/
+list-style-type: none; /*убираем маркеры от списка ul*/
+margin: 0; /*ставим в 0 пикселей внешние отступы*/
+padding: 0; /*ставим в 0 пикселей внутренние отступы*/
+}
+.images__item {
+padding: 10px 30px; /* Внутренние отступы: 10px сверху и снизу, 30px слева и
+справа */
+border-radius: 20px; /* скругление углов на 20px*/
+box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);/*тень карточки*/
 }

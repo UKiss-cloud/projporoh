@@ -1,0 +1,27 @@
+[
+    {
+        "imageUrl": [
+            "images/content1.jpg",
+            "images/content2.jpg"
+        ],
+        "imageAlt": "Подборка первая",
+        "imageWidth": 200
+    },
+
+    {
+        "imageUrl": [
+            "images/content3.jpg",
+            "images/content4.jpg"
+        ],
+        "imageAlt": "Подборка вторая",
+        "imageWidth": 200
+    },
+    {
+        "imageUrl": [
+            "images/content5.jpg",
+            "images/content6.jpg"
+        ],
+        "imageAlt": "Подборка третья",
+        "imageWidth": 200
+    }
+]

@@ -6,8 +6,17 @@
     <title>UKiss</title>
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="data:,">
 </head>
 <body>
+    <div class="preloader">
+        <div class="loader">
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+    </div>
+    <div class="content">
     <header class="header container">
             <img class="header__logo" src="images/logoza.ru.png" alt="Логотип" width="150" height="150">
             <h1 class="header__title">UKiss</h1>
@@ -119,12 +128,11 @@
                     </li>
                 </ul>
             </section>
-            <section class="new">
-                <h2 class="new__start">Новая коллекция</h2>
-                <ul class="startimg">
-                    <li class="new__new">
-                        <img class="new__img" src="images/start.webp" alt="Старт2" width="1700" height="900">
-                    </li>
+            <section class="images">
+                <h2 class="images__title">Новая коллекция</h2>
+                
+                <ul class="images__list">
+                    
                 </ul>
             </section>
             <section class="addinfo">
@@ -162,6 +170,7 @@
             </li>
             </ul>
         </footer>
+    </div>
         <script src="scripts/script.js"></script>
         <div class="modal">
             <div class="modal-content">
